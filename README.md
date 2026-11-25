@@ -1,4 +1,29 @@
+# INACTIVE: This repository is no longer maintained
+
+---
+
 # aws-kms-sign-csr
+
+## Overview
+
+### What it is
+- A Python script, `aws-kms-sign-csr.py`, that re-signs a certificate signing request (CSR) with an asymmetric key stored in AWS KMS.
+- It replaces the public key in the CSR with the KMS public key and signs the CSR through the KMS `Sign` API. The private key never leaves KMS.
+- It supports RSA (sha256, sha384, sha512) and ECDSA (sha224, sha256, sha384, sha512). It uses `boto3`, `pyasn1`, and `pyasn1-modules`.
+
+### How it relates to other repos
+- It is a fork of `g-a-d/aws-kms-sign-csr` on GitHub (git remote `upstream`).
+
+### How to run or deploy
+- Create a virtualenv and run `pip3 install -r requirements.txt`.
+- Run `./aws-kms-sign-csr.py --region <region> --keyid <key id or alias> --hashalgo sha256 test.csr > new.csr`. Add `--signalgo ECDSA` for EC keys.
+- It uses the standard AWS credentials of the caller.
+- It is not maintained. Use this only as a reference.
+
+### Current status
+- Inactive and no longer used.
+
+---
 
 Given an existing CSR (in PEM format) and a keypair in AWS KMS, this script:
 * updates the public key to the public key of the asymmetric keypair
